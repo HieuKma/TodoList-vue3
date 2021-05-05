@@ -16,7 +16,19 @@ export default {
 </script>
 
 <style>
+* {
+  padding: 0;
+  margin: 0;
+}
+bpdy {
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  width: 400px;
+  margin: 0 auto;
 }
 </style>

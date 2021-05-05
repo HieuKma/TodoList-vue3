@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1>Việc Cần Làm</h1>
+    <h1>Remind me</h1>
   </header>
 </template>
 
@@ -12,9 +12,10 @@ export default {
 
 <style scoped>
 .header {
-  background: #333;
-  color: #fff;
+  font-size: 40px;
   text-align: center;
-  padding: 10px;
+  padding: 20px 0 30px;
+  font-family: 'Dancing Script', cursive;
+  color: #0f81ce;
 }
 </style>
