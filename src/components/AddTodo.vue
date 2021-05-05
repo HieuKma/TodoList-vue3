@@ -1,13 +1,28 @@
 <template>
-  <form class="todo-form">
-    <input type="text" value="akhsb" />
+  <form class="todo-form" @submit="addItem">
+    <input type="text" placeholder="Add todo" v-model="title" />
     <input type="submit" value="Add" />
   </form>
 </template>
 
 <script>
+import { ref } from 'vue';
+import {v4 as uuidv4} from 'uuid';
 export default {
   name: "add-todo",
+  setup(props, context) {
+    const title = ref('');
+
+    const addItem = (e) => {
+        e.preventDefault();
+        context.emit('add-todo', {
+            id: uuidv4(), title: title.value, completed: false
+        });
+        title.value = '';
+    }
+
+    return { title, addItem }
+  }
 };
 </script>
 

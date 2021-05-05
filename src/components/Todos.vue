@@ -1,6 +1,6 @@
 <template>
   <div class="todo__content">
-    <add-todo></add-todo>
+    <add-todo @add-todo="handleAddItem"></add-todo>
     <div class="todo__list">
       <TodoItem 
         v-for="(todo, index) in todos" 
@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import {v4 as uuidv4} from 'uuid';
 
 import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
@@ -25,9 +26,9 @@ export default {
   components: { TodoItem, AddTodo },
   setup() {
     const todos = ref([
-      { id: 1, title: 'Viec 1', isComplete: false },
-      { id: 2, title: 'Viec 2', isComplete: true },
-      { id: 3, title: 'Viec 3', isComplete: false },
+      { id: uuidv4(), title: 'Viec 1', isComplete: false },
+      { id: uuidv4(), title: 'Viec 2', isComplete: true },
+      { id: uuidv4(), title: 'Viec 3', isComplete: false },
     ])
 
     const markCompeled = id => {
@@ -40,10 +41,15 @@ export default {
       todos.value = todos.value.filter(item => item.id !== id )
     }
 
+    const handleAddItem = todo => {
+      todos.value.push(todo);
+    }
+
     return {
       todos,
       markCompeled,
-      deleteItem
+      deleteItem,
+      handleAddItem
     }
   }
 }
